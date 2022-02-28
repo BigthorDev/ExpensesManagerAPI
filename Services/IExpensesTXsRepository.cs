@@ -8,6 +8,10 @@ namespace ExpensesManagerAPI.Services
 {
     public interface IExpensesTXsRepository
     {
-        List<Expenses> GetExpenseTransactions();
+        void AddExpense(Expense expense);
+
+        Task<Expense> GetExpenseByID(int Id);
+
+        Task<List<Expense>> GetExpenseTransactions();
     }
 }
