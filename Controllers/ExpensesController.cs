@@ -1,5 +1,7 @@
 ﻿using ExpensesManagerAPI.Entities;
 using ExpensesManagerAPI.Services;
+using Microsoft.AspNetCore.Authentication.JwtBearer;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.ModelBinding;
 using Microsoft.Extensions.Logging;
@@ -25,6 +27,7 @@ namespace ExpensesManagerAPI.Controllers
 
         [HttpGet]
         [HttpGet("list")]
+        [Authorize(AuthenticationSchemes = JwtBearerDefaults.AuthenticationScheme)]
         public async Task<ActionResult<List<Expense>>> Get()
         {
             logger.LogInformation("Getting all expenses");
